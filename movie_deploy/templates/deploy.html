@@ -1,0 +1,115 @@
+<!-- 
+
+    ======================================================
+An Implementation of Sentiment Analysis at DSN '19
+======================================================
+
+Backend: Aminu Israel 
+Frontend: Ajadi Paul O.
+ -->
+
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Welcome: Give Reviews</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/mdb.css' %}">
+
+    
+</head>
+<body class="container-fluid py-0">
+    <!-- Header -->
+    <section id="header">
+        <header>
+            <h1>Movie Review </h1>
+            <p>An Implementation of Sentiment Analysis at DSN '19</p>
+        </header>
+        <footer>
+            <a href="#review" class="button ">Click to Proceed</a>
+        </footer>
+    </section>
+
+    <section id="review" style="padding:1%">
+        <div class="row">
+                
+                <div class="col-md-12">
+                        <form class="form-control" form action="/submit" method="POST">{% csrf_token %}
+                            <textarea style="resize: none;" required placeholder="Provide text to analyze..." class="rounded py-2 px-2 w-100" name="content1" id="" cols="30" rows="5"></textarea>
+                            <hr>
+                            <!-- TODO: Use bootstrap modal to view the result -->
+                            <input class="btn btn-outline-dark-green action-btn rounded-right" type="submit" value="Get Prediction" class='action-btn'
+                            data-toggle="modal" data-target="" />
+                            <span id="results" class="pred px-1"> 
+                            Prediction:   {{get_prediction}} 
+                            | 
+                            Percentage: {{get_prob}}</span>
+                        </form>
+                </div>
+
+        </div>
+        
+        
+    </section>
+    <div style="background: #fff; padding:1%" id="results1" class="py-2 px-lg-5 row justify-content-center">
+            <span class="text-success ">Analyzed Text : </span>
+            <span class="text-muted">  {{review}} </span>
+    </div>
+ 
+
+    
+
+
+  
+    <!-- Button trigger modal -->
+      <input hidden value="Launch demo modal" type="button" class="btn btn-primary" data-toggle="modal" data-target="#basicExampleModal">
+            
+      
+      
+      <!-- Modal -->
+      <div class="modal" id="basicExampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              
+            </div>
+            <div class="modal-body">
+              ...
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    <!-- <script src="main.js"></script> -->
+    <!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+    <script type="text/javascript" src="{% static 'javascript/jquery-3.3.1.min.js' %}" ></script>
+    <script type="text/javascript" src="{% static 'javascript/bootstrap.min.js' %}" ></script>
+    <script type="text/javascript" src="{% static 'javascript/mdb.min.js' %}" ></script>
+      <script>
+        //   $("#results").hide();
+      </script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            
+            // jQuery methods go here...
+            $(document).on('click', 'a[href^="#"]', function (e) {
+                e.preventDefault();
+                $('html, body').stop().animate({
+                    scrollTop: $($(this).attr('href')).offset().top
+                }, 1000, 'linear');
+            });
+        });
+    </script>
+</body>
+</html>

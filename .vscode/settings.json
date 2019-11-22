@@ -1,0 +1,8 @@
+{
+    "python.pythonPath": "/usr/bin/python3",
+    "terminal.integrated.confirmOnExit": true,
+    "terminal.integrated.cursorBlinking": true,
+    "terminal.integrated.experimentalRefreshOnResume": true,
+    "terminal.integrated.cursorStyle": "underline",
+    "terminal.integrated.enableBell": true
+}
